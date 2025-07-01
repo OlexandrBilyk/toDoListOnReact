@@ -1,8 +1,15 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 export default function TaskList() {
     const [inputValue, setInputValue] = useState("");
-    const [items, setItems] = useState([]);
+    const [items, setItems] = useState(() => {
+        const items = localStorage.getItem('reactTodoItems')
+        return items ? JSON.parse(items) : [];
+    });
+
+    useEffect(() => {
+        localStorage.setItem('reactTodoItems', JSON.stringify(items))
+    }, [items])
 
     function handleClick() {
         if (inputValue.trim() === '') return
