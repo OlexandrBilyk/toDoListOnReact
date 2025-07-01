@@ -13,9 +13,10 @@ export default function TaskList() {
 
     function handleClick() {
         if (inputValue.trim() === '') return
-        setItems(prev => [...prev, { text: inputValue, isDone: false }]
-        )
+        setItems(prev => [...prev, { text: inputValue, isDone: false }])
         setInputValue('')
+        console.log('gh-pages works automatically');
+        
     }
 
     function setDoneItems(index) {
